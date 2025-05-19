@@ -31,3 +31,4 @@ function reverseOnlyLetters(s: string): string {
 console.log(reverseOnlyLetters("ab-cd"));                       // dc-ba
 console.log(reverseOnlyLetters("a-bC-dEf-ghIj"));              // j-Ih-gfE-dCba
 console.log(reverseOnlyLetters("Test1ng-Leet=code-Q!"));      // Qedo1ct-eeLg=ntse-T!
+console.log(reverseOnlyLetters("85-0456"));                  // 85-0456
