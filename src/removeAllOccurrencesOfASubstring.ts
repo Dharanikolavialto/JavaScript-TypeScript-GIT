@@ -4,6 +4,6 @@ function removeOccurrences(s: string, part: string): string {
     }
     return s;
 }
-// inputs
+// input
 console.log(removeOccurrences("daabcbaabcbc", "abc"));      // dab
 console.log(removeOccurrences("axxxxyyyyb", "xy"));        // ab
