@@ -5,5 +5,6 @@ function removeOccurrences(s, part) {
     }
     return s;
 }
-console.log(removeOccurrences("daabcbaabcbc", "abc")); // Output: "dab"
-console.log(removeOccurrences("axxxxyyyyb", "xy")); // Output: "ab"
+// inputs
+console.log(removeOccurrences("daabcbaabcbc", "abc")); // dab
+console.log(removeOccurrences("axxxxyyyyb", "xy")); // ab
