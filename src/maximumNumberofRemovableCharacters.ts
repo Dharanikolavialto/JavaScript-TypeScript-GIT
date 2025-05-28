@@ -36,7 +36,6 @@ function maximumRemovals(s: string, p: string, removable: number[]): number {
 
     return answer;
 }
-// input
 console.log(maximumRemovals("abcacb", "ab", [3,1,0]));                  // 2
 console.log(maximumRemovals("abcbddddd", "abcd", [3,2,1,4,5,6]));      // 1
 console.log(maximumRemovals("abcab", "abc", [0,1,2,3,4]));            // 0
