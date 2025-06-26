@@ -69,3 +69,4 @@ console.log(minMovesToMakePalindrome("mamad")); // 3
 console.log(minMovesToMakePalindrome("a")); // 0
 console.log(minMovesToMakePalindrome("abcdefgfedcba")); // 0
 console.log(minMovesToMakePalindrome("racecar")); // 0
+console.log(minMovesToMakePalindrome("fnvbhjodcnbkh")); // 27
