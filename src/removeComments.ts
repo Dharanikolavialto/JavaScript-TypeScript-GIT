@@ -21,7 +21,7 @@
 // The line by line output code is visualized as below:
 // int main()
 // { 
-  
+
 // int a, b, c;
 // a = b + c;
 // }
@@ -32,32 +32,32 @@
 // Explanation: The original source string is "a/*comment\nline\nmore_comment*/b", where we have bolded the newline characters.  After deletion, the implicit newline characters are deleted, leaving the string "ab", which when delimited by newline characters becomes ["ab"].*/
 
 function removeComments(source: string[]): string[] {
-    const result: string[]= [];
+    const result: string[] = [];
     // To track if we are inside a block comment
-    let inBlockComment= false;
+    let inBlockComment = false;
 
-    for(const line of source) {
+    for (const line of source) {
         // To hold the current line without comments
-        let newLine= '';
+        let newLine = '';
         // Pointer to go through each character of the line
-        let i= 0;
-         while(i< line.length) {
+        let i = 0;
+        while (i < line.length) {
             // If we're inside a block comment, skip characters until we find "*/"
-            if(inBlockComment) {
-                if(line[i] === '*' && line[i+1] === '/') {
-                    inBlockComment= false; // End of block comment
+            if (inBlockComment) {
+                if (line[i] === '*' && line[i + 1] === '/') {
+                    inBlockComment = false; // End of block comment
                     i += 2; // Skip "*/"
                 } else {
                     i++;  // Continue inside the block comment
-                } 
+                }
             } else {
                 // If we find a block comment "/*", enter block comment mode
-                if(line[i] === '/' && line[i+1] === '*') {
-                    inBlockComment= true;
+                if (line[i] === '/' && line[i + 1] === '*') {
+                    inBlockComment = true;
                     i += 2;
                 }
                 // If we find a line comment "//", stop reading the rest of the line
-                else if(line[i] === '/' && line[i+1] === '/') {
+                else if (line[i] === '/' && line[i + 1] === '/') {
                     break; // Ignore everything after "//"
                 } else {
                     newLine += line[i]; // Otherwise, it's code, so keep it
@@ -67,7 +67,7 @@ function removeComments(source: string[]): string[] {
         }
 
         // If the newLine is not empty (ignoring whitespace), add it to the result
-        if(newLine.trim() !== '') {
+        if (newLine.trim() !== '') {
             result.push(newLine);
         }
     }
@@ -76,21 +76,31 @@ function removeComments(source: string[]): string[] {
 
 // Inputs
 console.log(removeComments([
-    "/*Test program */", 
-    "int main()", 
-    "{ ", 
-    "  // variable declaration ", 
-    "int a, b, c;", 
-    "/* This is a test", 
-    "   multiline  ", 
-    "   comment for ", 
-    "   testing */", 
-    "a = b + c;", 
+    "/*Test program */",
+    "int main()",
+    "{ ",
+    "  // variable declaration ",
+    "int a, b, c;",
+    "/* This is a test",
+    "   multiline  ",
+    "   comment for ",
+    "   testing */",
+    "a = b + c;",
     "}"
 ]));  // ["int main()","{ ","  ","int a, b, c;","a = b + c;","}"]
 
 console.log(removeComments([
-    "a/*comment", 
-    "line", 
+    "a/*comment",
+    "line",
     "more_comment*/b"
 ]));  // [ 'a', 'b' ]
+
+console.log(removeComments([
+    "code // comment /* not block */",
+    "next line"
+]));  // ["code", "next line"]
+
+console.log(removeComments([
+    "a = b; // line comment /* ignored */ more"
+]));
+// Expected: ["a = b;"]

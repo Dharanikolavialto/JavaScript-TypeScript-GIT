@@ -91,3 +91,11 @@ console.log(removeComments([
     "line",
     "more_comment*/b"
 ])); // [ 'a', 'b' ]
+console.log(removeComments([
+    "code // comment /* not block */",
+    "next line"
+])); // ["code", "next line"]
+console.log(removeComments([
+    "a = b; // line comment /* ignored */ more"
+]));
+// Expected: ["a = b;"]
